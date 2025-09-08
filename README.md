@@ -35,8 +35,8 @@ A comprehensive Python application that fetches cryptocurrency data from CoinGec
 
 ```bash
 # Clone the repository
-git clone <repository-url>
-cd cryptocurrency-scraper
+git clone https://github.com/uxama-jamil/crypto-llm-analyzer.git
+cd crypto-llm-analyzer
 
 # Install required packages
 pip install -r requirements.txt
