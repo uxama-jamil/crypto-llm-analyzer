@@ -15,14 +15,14 @@ A comprehensive Python application that fetches cryptocurrency data from CoinGec
 
 ## 📋 Table of Contents
 
-- [Installation](##installation)
-- [Quick Start](##quick-start)
-- [Usage Examples](##usage-examples)
-- [Configuration](##configuration)
-- [API Documentation](##api-documentation)
-- [Project Structure](##project-structure)
-- [Contributing](##contributing)
-- [License](##license)
+- [Installation](#-installation)
+- [Quick Start](#-quick-start)
+- [Usage Examples](#-usage-examples)
+- [Configuration](#-configuration)
+- [API Documentation](#-api-documentation)
+- [Project Structure](#-project-structure)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ## 🛠️ Installation
 
