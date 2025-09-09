@@ -1,0 +1,51 @@
+{
+  "data": {
+    "ath": 124128,
+    "atl": 67.81,
+    "circulating_supply": 19918368.0,
+    "coin_id": "bitcoin",
+    "current_price": 112744,
+    "data_points": 0,
+    "data_source": "CoinGecko API",
+    "global_market_data": {
+      "active_cryptocurrencies": 18661,
+      "bitcoin_percentage": 56.08092942328716,
+      "markets": 1367,
+      "total_market_cap_usd": 4009690052231.6636,
+      "total_volume_24h_usd": 152898190686.85233
+    },
+    "historical_prices": [],
+    "last_updated": "2025-09-09T10:50:53.477Z",
+    "market_cap": 2245991130846,
+    "market_cap_rank": 1,
+    "max_supply": 21000000.0,
+    "name": "Bitcoin",
+    "price_change_24h": 0.58153,
+    "price_change_30d": -4.72401,
+    "price_change_7d": 2.19434,
+    "scraped_at": "2025-09-09T15:52:19.864587",
+    "symbol": "BTC",
+    "timeframe": "weekly",
+    "total_supply": 19918368.0,
+    "volume_24h": 40267933812
+  },
+  "formatted_data": {
+    "formatted_text": "======================================================================\n\ud83d\udcc8 CRYPTOCURRENCY DATA: Bitcoin (BTC)\n======================================================================\n\ud83d\udcb0 CURRENT MARKET DATA:\n   Current Price:        $112,744.00000000\n   Market Cap:           $2,245,991,130,846\n   24h Trading Volume:   $40,267,933,812\n   Market Cap Rank:      #1\n\n\ud83c\udfe6 SUPPLY INFORMATION:\n   Circulating Supply:   19,918,368.0\n   Total Supply:         19,918,368.0\n   Max Supply:           21,000,000.0\n\n\ud83d\udcca PRICE CHANGES:\n   24h:                  +0.58%\n   7d:                   +2.19%\n   30d:                  -4.72%\n\n\ud83c\udfc6 ALL-TIME RECORDS:\n   All-Time High:        $124,128.00000000\n   All-Time Low:         $67.81000000\n\n\ud83c\udf0d GLOBAL MARKET DATA:\n   Total Crypto Market Cap: $4,009,690,052,231.6636\n   Total 24h Volume:     $152,898,190,686.85233\n   Bitcoin Dominance:    56.08%\n   Active Cryptocurrencies: 18,661\n\n\ud83d\udccb METADATA:\n   Timeframe:            weekly\n   Historical Data Points: 0\n   Data Source:          CoinGecko API\n   Last Updated:         2025-09-09T10:50:53.477Z\n   Scraped At:           2025-09-09T15:52:19.864587\n======================================================================",
+    "summary": {
+      "ath": 124128,
+      "atl": 67.81,
+      "current_price": 112744,
+      "market_cap": 2245991130846,
+      "market_cap_rank": 1,
+      "name": "Bitcoin",
+      "price_change_24h": 0.58153,
+      "price_change_30d": -4.72401,
+      "price_change_7d": 2.19434,
+      "symbol": "BTC",
+      "volume_24h": 40267933812
+    }
+  },
+  "llm_analysis": "{\n  \"market_analysis\": {\n    \"current_trend\": \"Bullish\",\n    \"trend_confidence\": \"Medium\",\n    \"market_phase\": \"Accumulation\",\n    \"risk_level\": \"Medium\",\n    \"liquidity_assessment\": \"High\"\n  },\n  \"trading_zones\": {\n    \"primary_buy_zone\": {\n      \"price_range\": \"$110,000 - $112,500\",\n      \"confidence\": 7,\n      \"rationale\": \"Current price is near the 50\u2011day moving average and the 200\u2011day MA is slightly below, indicating a short\u2011term bullish bias. The 30\u2011day decline has stalled, creating a consolidation zone.\",\n      \"risk_reward_ratio\": \"1:2\"\n    },\n    \"secondary_buy_zone\": {\n      \"price_range\": \"$108,000 - $110,000\",\n      \"confidence\": 5,\n      \"rationale\": \"This level aligns with the 20\u2011day EMA and a recent swing low. A dip here would still be within the accumulation phase.\",\n      \"risk_reward_ratio\": \"1:3\"\n    },\n    \"primary_resistance\": {\n      \"price_range\": \"$115,000 - $117,000\",\n      \"confidence\": 8,\n      \"rationale\": \"The 100\u2011day SMA and a recent swing high form a strong resistance cluster. Breakout would likely require sustained volume.\"\n    },\n    \"key_support\": \"$110,000\",\n    \"key_resistance\": \"$117,000\"\n  },\n  \"take_profit_levels\": {\n    \"tp1_conservative\": {\n      \"price\": \"$115,000\",\n      \"percentage_gain\": \"2.5%\",\n      \"probability\": \"70%\",\n      \"allocation\": \"30% of position\"\n    },\n    \"tp2_moderate\": {\n      \"price\": \"$120,000\",\n      \"percentage_gain\": \"6.0%\",\n      \"probability\": \"55%\",\n      \"allocation\": \"40% of position\"\n    },\n    \"tp3_aggressive\": {\n      \"price\": \"$125,000\",\n      \"percentage_gain\": \"11.0%\",\n      \"probability\": \"35%\",\n      \"allocation\": \"30% of position\"\n    }\n  },\n  \"stop_loss\": {\n    \"conservative_sl\": {\n      \"price\": \"$109,000\",\n      \"percentage_loss\": \"3.0%\",\n      \"rationale\": \"Below the 20\u2011day EMA and the 50\u2011day SMA, indicating a break of short\u2011term support.\"\n    },\n    \"moderate_sl\": {\n      \"price\": \"$107,000\",\n      \"percentage_loss\": \"5.0%\",\n      \"rationale\": \"Below the 100\u2011day SMA and the recent swing low, a deeper downside move.\"\n    }\n  },\n  \"technical_indicators\": {\n    \"rsi_14\": \"54 - Neutral\",\n    \"macd_signal\": \"Bullish\",\n    \"volume_trend\": \"Increasing\",\n    \"moving_average_trend\": \"Bullish\",\n    \"support_strength\": \"Moderate\",\n    \"resistance_strength\": \"Moderate\"\n  },\n  \"time_horizon\": {\n    \"short_term_1_7_days\": \"Likely to stay within $112k\u2013$117k. Watch for a breakout above $117k.\",\n    \"medium_term_1_4_weeks\": \"Target $120k if the 100\u2011day SMA holds. Key support at $110k.\",\n    \"long_term_1_3_months\": \"Potential to reach $125k\u2013$130k if bullish momentum continues; risk of a pullback to $110k if macro conditions worsen.\"\n  },\n  \"position_sizing\": {\n    \"conservative_trader\": \"2% of portfolio\",\n    \"moderate_trader\": \"5% of portfolio\",\n    \"aggressive_trader\": \"10% of portfolio\",\n    \"maximum_risk\": \"Never exceed 5% of total portfolio\"\n  },\n  \"risk_warnings\": {\n    \"high_risk_factors\": [\n      \"Regulatory crackdowns on crypto exchanges\",\n      \"Macroeconomic downturn affecting risk appetite\",\n      \"Liquidity drain if BTC dominance spikes further\"\n    ],\n    \"market_conditions_impact\": \"High BTC dominance (56%) suggests that BTC will absorb most market moves, leaving limited upside for BTC itself unless a major catalyst occurs.\",\n    \"volatility_alert\": \"Expected daily swing range of \u00b15% around the current price.\"\n  },\n  \"key_insights\": {\n    \"market_context\": \"BTC is in a consolidation phase after a recent rally, with high liquidity and a strong 200\u2011day SMA acting as a floor. The market is dominated by BTC, so any significant move will likely be driven by institutional activity or macro events.\",\n    \"price_catalysts\": [\n      \"Potential approval of a new BTC ETF in the U.S.\",\n      \"Institutional adoption announcements (e.g., major banks adding BTC to treasury)\"\n    ],\n    \"alternative_scenarios\": {\n      \"bull_case\": \"BTC breaks above $117k with sustained volume, climbs to $130k within 3 months, driven by ETF approval and institutional inflows.\",\n      \"bear_case\": \"BTC fails to hold above $110k, pulls back to $100k as global risk sentiment deteriorates and regulatory scrutiny increases.\"\n    }\n  }\n}",
+  "success": true,
+  "timestamp": "2025-09-09T15:52:24.340638"
+}

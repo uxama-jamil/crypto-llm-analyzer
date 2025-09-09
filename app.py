@@ -72,7 +72,7 @@ Examples:
         data = scraper.scrape_coin_data(args.coin, args.timeframe)
         
         if not data:
-            print("❌ Failed to scrape coin data")
+            print("[ERROR] Failed to scrape coin data")
             sys.exit(1)
         
         # Output data
@@ -89,10 +89,10 @@ Examples:
             save_to_csv(data, filename)
         
     except KeyboardInterrupt:
-        print("\n⏹️  Operation cancelled by user")
+        print("\n[INFO] Operation cancelled by user")
         sys.exit(1)
     except Exception as e:
-        print(f"❌ An unexpected error occurred: {e}")
+        print(f"[ERROR] An unexpected error occurred: {e}")
         sys.exit(1)
 
 

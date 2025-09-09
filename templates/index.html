@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto LLM Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-chart-line"></i> Crypto LLM Analyzer</h1>
+            <p>AI-powered cryptocurrency analysis and insights</p>
+        </header>
+
+        <div class="search-section">
+            <div class="search-form">
+                <div class="form-group">
+                    <label for="coin-input">Cryptocurrency</label>
+                    <input type="text" id="coin-input" placeholder="Enter coin name or symbol (e.g., bitcoin, btc, ethereum)">
+                </div>
+                <div class="form-group">
+                    <label for="timeframe-select">Timeframe</label>
+                    <select id="timeframe-select">
+                        <option value="daily">Daily (24 hours)</option>
+                        <option value="weekly" selected>Weekly (7 days)</option>
+                        <option value="monthly">Monthly (30 days)</option>
+                    </select>
+                </div>
+                <button id="analyze-btn" class="analyze-btn">
+                    <i class="fas fa-search"></i> Analyze
+                </button>
+            </div>
+        </div>
+
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Fetching crypto data and generating AI analysis...</p>
+        </div>
+
+        <div id="error" class="error" style="display: none;"></div>
+
+        <div id="results" class="results" style="display: none;">
+            <div class="results-header">
+                <h2 id="coin-title"></h2>
+                <span id="timestamp" class="timestamp"></span>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="overview">Overview</button>
+                <button class="tab-btn" data-tab="analysis">AI Analysis</button>
+                <button class="tab-btn" data-tab="historical">Historical Data</button>
+            </div>
+
+            <div class="tab-content">
+                <div id="overview" class="tab-pane active">
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">Current Price</div>
+                            <div class="metric-value" id="current-price">-</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Market Cap</div>
+                            <div class="metric-value" id="market-cap">-</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">24h Volume</div>
+                            <div class="metric-value" id="volume-24h">-</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Market Rank</div>
+                            <div class="metric-value" id="market-rank">-</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">24h Change</div>
+                            <div class="metric-value" id="change-24h">-</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">7d Change</div>
+                            <div class="metric-value" id="change-7d">-</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">30d Change</div>
+                            <div class="metric-value" id="change-30d">-</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">All Time High</div>
+                            <div class="metric-value" id="ath">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="analysis" class="tab-pane">
+                    <div class="analysis-content">
+                        <div class="analysis-header">
+                            <i class="fas fa-robot"></i>
+                            <h3>AI-Powered Trading Analysis</h3>
+                        </div>
+                        <div id="llm-analysis" class="analysis-sections">
+                            <p class="analysis-placeholder">Click "Analyze" to generate comprehensive AI trading insights...</p>
+                            
+                            <!-- Market Analysis Section -->
+                            <div class="analysis-section" id="market-analysis" style="display: none;">
+                                <h4><i class="fas fa-chart-line"></i> Market Analysis</h4>
+                                <div class="analysis-grid">
+                                    <div class="analysis-item">
+                                        <span class="label">Current Trend:</span>
+                                        <span class="value" id="current-trend">-</span>
+                                    </div>
+                                    <div class="analysis-item">
+                                        <span class="label">Confidence:</span>
+                                        <span class="value" id="trend-confidence">-</span>
+                                    </div>
+                                    <div class="analysis-item">
+                                        <span class="label">Market Phase:</span>
+                                        <span class="value" id="market-phase">-</span>
+                                    </div>
+                                    <div class="analysis-item">
+                                        <span class="label">Risk Level:</span>
+                                        <span class="value" id="risk-level">-</span>
+                                    </div>
+                                    <div class="analysis-item">
+                                        <span class="label">Liquidity:</span>
+                                        <span class="value" id="liquidity-assessment">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Trading Zones Section -->
+                            <div class="analysis-section" id="trading-zones" style="display: none;">
+                                <h4><i class="fas fa-crosshairs"></i> Trading Zones</h4>
+                                <div class="trading-zones-grid">
+                                    <div class="zone-card buy-zone">
+                                        <h5>Primary Buy Zone</h5>
+                                        <div class="zone-price" id="primary-buy-price">-</div>
+                                        <div class="zone-confidence">Confidence: <span id="primary-buy-confidence">-</span>/10</div>
+                                        <div class="zone-ratio">Risk/Reward: <span id="primary-buy-ratio">-</span></div>
+                                        <div class="zone-rationale" id="primary-buy-rationale">-</div>
+                                    </div>
+                                    <div class="zone-card buy-zone">
+                                        <h5>Secondary Buy Zone</h5>
+                                        <div class="zone-price" id="secondary-buy-price">-</div>
+                                        <div class="zone-confidence">Confidence: <span id="secondary-buy-confidence">-</span>/10</div>
+                                        <div class="zone-ratio">Risk/Reward: <span id="secondary-buy-ratio">-</span></div>
+                                        <div class="zone-rationale" id="secondary-buy-rationale">-</div>
+                                    </div>
+                                    <div class="zone-card resistance-zone">
+                                        <h5>Primary Resistance</h5>
+                                        <div class="zone-price" id="resistance-price">-</div>
+                                        <div class="zone-confidence">Confidence: <span id="resistance-confidence">-</span>/10</div>
+                                        <div class="zone-rationale" id="resistance-rationale">-</div>
+                                    </div>
+                                </div>
+                                <div class="key-levels">
+                                    <div class="key-level support">
+                                        <span class="label">Key Support:</span>
+                                        <span class="value" id="key-support">-</span>
+                                    </div>
+                                    <div class="key-level resistance">
+                                        <span class="label">Key Resistance:</span>
+                                        <span class="value" id="key-resistance">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Take Profit Levels Section -->
+                            <div class="analysis-section" id="take-profit-levels" style="display: none;">
+                                <h4><i class="fas fa-bullseye"></i> Take Profit Levels</h4>
+                                <div class="tp-levels-grid">
+                                    <div class="tp-card conservative">
+                                        <h5>Conservative TP</h5>
+                                        <div class="tp-price" id="tp1-price">-</div>
+                                        <div class="tp-gain">Gain: <span id="tp1-gain">-</span></div>
+                                        <div class="tp-probability">Probability: <span id="tp1-probability">-</span></div>
+                                        <div class="tp-allocation">Allocation: <span id="tp1-allocation">-</span></div>
+                                    </div>
+                                    <div class="tp-card moderate">
+                                        <h5>Moderate TP</h5>
+                                        <div class="tp-price" id="tp2-price">-</div>
+                                        <div class="tp-gain">Gain: <span id="tp2-gain">-</span></div>
+                                        <div class="tp-probability">Probability: <span id="tp2-probability">-</span></div>
+                                        <div class="tp-allocation">Allocation: <span id="tp2-allocation">-</span></div>
+                                    </div>
+                                    <div class="tp-card aggressive">
+                                        <h5>Aggressive TP</h5>
+                                        <div class="tp-price" id="tp3-price">-</div>
+                                        <div class="tp-gain">Gain: <span id="tp3-gain">-</span></div>
+                                        <div class="tp-probability">Probability: <span id="tp3-probability">-</span></div>
+                                        <div class="tp-allocation">Allocation: <span id="tp3-allocation">-</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Stop Loss Section -->
+                            <div class="analysis-section" id="stop-loss-section" style="display: none;">
+                                <h4><i class="fas fa-shield-alt"></i> Stop Loss Levels</h4>
+                                <div class="sl-levels-grid">
+                                    <div class="sl-card conservative">
+                                        <h5>Conservative SL</h5>
+                                        <div class="sl-price" id="conservative-sl-price">-</div>
+                                        <div class="sl-loss">Loss: <span id="conservative-sl-loss">-</span></div>
+                                        <div class="sl-rationale" id="conservative-sl-rationale">-</div>
+                                    </div>
+                                    <div class="sl-card moderate">
+                                        <h5>Moderate SL</h5>
+                                        <div class="sl-price" id="moderate-sl-price">-</div>
+                                        <div class="sl-loss">Loss: <span id="moderate-sl-loss">-</span></div>
+                                        <div class="sl-rationale" id="moderate-sl-rationale">-</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Technical Indicators Section -->
+                            <div class="analysis-section" id="technical-indicators" style="display: none;">
+                                <h4><i class="fas fa-chart-bar"></i> Technical Indicators</h4>
+                                <div class="indicators-grid">
+                                    <div class="indicator-item">
+                                        <span class="label">RSI (14):</span>
+                                        <span class="value" id="rsi-value">-</span>
+                                    </div>
+                                    <div class="indicator-item">
+                                        <span class="label">MACD Signal:</span>
+                                        <span class="value" id="macd-signal">-</span>
+                                    </div>
+                                    <div class="indicator-item">
+                                        <span class="label">Volume Trend:</span>
+                                        <span class="value" id="volume-trend">-</span>
+                                    </div>
+                                    <div class="indicator-item">
+                                        <span class="label">MA Trend:</span>
+                                        <span class="value" id="ma-trend">-</span>
+                                    </div>
+                                    <div class="indicator-item">
+                                        <span class="label">Support Strength:</span>
+                                        <span class="value" id="support-strength">-</span>
+                                    </div>
+                                    <div class="indicator-item">
+                                        <span class="label">Resistance Strength:</span>
+                                        <span class="value" id="resistance-strength">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Time Horizons Section -->
+                            <div class="analysis-section" id="time-horizons" style="display: none;">
+                                <h4><i class="fas fa-clock"></i> Time Horizons</h4>
+                                <div class="horizon-cards">
+                                    <div class="horizon-card">
+                                        <h5>Short Term (1-7 days)</h5>
+                                        <p id="short-term-outlook">-</p>
+                                    </div>
+                                    <div class="horizon-card">
+                                        <h5>Medium Term (1-4 weeks)</h5>
+                                        <p id="medium-term-outlook">-</p>
+                                    </div>
+                                    <div class="horizon-card">
+                                        <h5>Long Term (1-3 months)</h5>
+                                        <p id="long-term-outlook">-</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Position Sizing Section -->
+                            <div class="analysis-section" id="position-sizing" style="display: none;">
+                                <h4><i class="fas fa-calculator"></i> Position Sizing Recommendations</h4>
+                                <div class="sizing-grid">
+                                    <div class="sizing-item">
+                                        <span class="label">Conservative Trader:</span>
+                                        <span class="value" id="conservative-size">-</span>
+                                    </div>
+                                    <div class="sizing-item">
+                                        <span class="label">Moderate Trader:</span>
+                                        <span class="value" id="moderate-size">-</span>
+                                    </div>
+                                    <div class="sizing-item">
+                                        <span class="label">Aggressive Trader:</span>
+                                        <span class="value" id="aggressive-size">-</span>
+                                    </div>
+                                    <div class="sizing-item warning">
+                                        <span class="label">Maximum Risk:</span>
+                                        <span class="value" id="maximum-risk">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Risk Warnings Section -->
+                            <div class="analysis-section" id="risk-warnings" style="display: none;">
+                                <h4><i class="fas fa-exclamation-triangle"></i> Risk Warnings</h4>
+                                <div class="risk-content">
+                                    <div class="risk-factors">
+                                        <h5>High Risk Factors:</h5>
+                                        <ul id="risk-factors-list"></ul>
+                                    </div>
+                                    <div class="market-impact">
+                                        <h5>Market Conditions Impact:</h5>
+                                        <p id="market-conditions-impact">-</p>
+                                    </div>
+                                    <div class="volatility-alert">
+                                        <h5>Volatility Alert:</h5>
+                                        <p id="volatility-alert">-</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Key Insights Section -->
+                            <div class="analysis-section" id="key-insights" style="display: none;">
+                                <h4><i class="fas fa-lightbulb"></i> Key Insights</h4>
+                                <div class="insights-content">
+                                    <div class="market-context">
+                                        <h5>Market Context:</h5>
+                                        <p id="market-context">-</p>
+                                    </div>
+                                    <div class="price-catalysts">
+                                        <h5>Price Catalysts:</h5>
+                                        <ul id="price-catalysts-list"></ul>
+                                    </div>
+                                    <div class="scenarios">
+                                        <div class="scenario bull">
+                                            <h5>Bull Case:</h5>
+                                            <p id="bull-case">-</p>
+                                        </div>
+                                        <div class="scenario bear">
+                                            <h5>Bear Case:</h5>
+                                            <p id="bear-case">-</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="historical" class="tab-pane">
+                    <div class="historical-content">
+                        <h3>Historical Price Data</h3>
+                        <div id="historical-data" class="data-table">
+                            <p>Historical data will appear here after analysis...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Powered by CoinGecko API and AI Language Models</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

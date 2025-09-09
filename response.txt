@@ -1,0 +1,102 @@
+{
+  "market_analysis": {
+    "current_trend": "Bullish",
+    "trend_confidence": "High",
+    "market_phase": "Markup",
+    "risk_level": "Medium",
+    "liquidity_assessment": "High"
+  },
+  "trading_zones": {
+    "primary_buy_zone": {
+      "price_range": "$3.70 - $3.90",
+      "confidence": 8,
+      "rationale": "Current price is above short‑term moving averages and near a recent consolidation area. Volume is rising, indicating support strength.",
+      "risk_reward_ratio": "1:2"
+    },
+    "secondary_buy_zone": {
+      "price_range": "$3.50 - $3.70",
+      "confidence": 6,
+      "rationale": "A deeper dip would test a historical support level that has held in the past 30 days. Volume would need to stay above average to confirm a bounce.",
+      "risk_reward_ratio": "1:3"
+    },
+    "primary_resistance": {
+      "price_range": "$4.50 - $4.70",
+      "confidence": 7,
+      "rationale": "Resistance is near the 20‑day high and a recent swing high. A breakout would likely need sustained volume above the 30‑day average."
+    },
+    "key_support": "$3.70",
+    "key_resistance": "$4.60"
+  },
+  "take_profit_levels": {
+    "tp1_conservative": {
+      "price": "$4.60",
+      "percentage_gain": "11.8%",
+      "probability": "70%",
+      "allocation": "40% of position"
+    },
+    "tp2_moderate": {
+      "price": "$5.00",
+      "percentage_gain": "20.2%",
+      "probability": "55%",
+      "allocation": "35% of position"
+    },
+    "tp3_aggressive": {
+      "price": "$5.50",
+      "percentage_gain": "32.5%",
+      "probability": "40%",
+      "allocation": "25% of position"
+    }
+  },
+  "stop_loss": {
+    "conservative_sl": {
+      "price": "$3.80",
+      "percentage_loss": "8.4%",
+      "rationale": "Below the primary support zone; volume would need to drop below average to confirm a break."
+    },
+    "moderate_sl": {
+      "price": "$3.60",
+      "percentage_loss": "13.7%",
+      "rationale": "Break below secondary support; indicates a potential trend reversal."
+    }
+  },
+  "technical_indicators": {
+    "rsi_14": "55 - Neutral",
+    "macd_signal": "Bullish",
+    "volume_trend": "Increasing",
+    "moving_average_trend": "Bullish",
+    "support_strength": "Moderate",
+    "resistance_strength": "Moderate"
+  },
+  "time_horizon": {
+    "short_term_1_7_days": "Likely to reach $4.60 if volume remains above average. Key levels: $4.50 resistance, $3.70 support.",
+    "medium_term_1_4_weeks": "Target $5.00 if the 20‑day MA stays above the 50‑day MA and volume continues to climb.",
+    "long_term_1_3_months": "Potential to reach $5.50 if network upgrades and parachain auctions drive demand; risk of a pullback to $4.20 if Bitcoin dominance rises."
+  },
+  "position_sizing": {
+    "conservative_trader": "2% of portfolio",
+    "moderate_trader": "5% of portfolio",
+    "aggressive_trader": "10% of portfolio",
+    "maximum_risk": "Never exceed 5% of total portfolio"
+  },
+  "risk_warnings": {
+    "high_risk_factors": [
+      "Regulatory changes affecting blockchain infrastructure",
+      "Sudden shift in Bitcoin dominance",
+      "Liquidity drain during market stress"
+    ],
+    "market_conditions_impact": "Altcoin rally is currently supported by a bullish macro environment, but a Bitcoin rally could trigger a short‑term pullback.",
+    "volatility_alert": "Expected price swing range 10%–15% over the next 30 days"
+  },
+  "key_insights": {
+    "market_context": "Polkadot is positioned in a strong altcoin rally with high liquidity and a bullish technical setup. The overall crypto market shows moderate volatility with Bitcoin dominance at 56%, indicating room for altcoin upside.",
+    "price_catalysts": [
+      "Upcoming parachain auction cycle",
+      "Network upgrade (e.g., Rococo or new runtime)",
+      "Potential institutional adoption of cross‑chain solutions"
+    ],
+    "alternative_scenarios": {
+      "bull_case": "If the network upgrade goes live and parachain auctions attract significant capital, price could climb to $6.00 within 3 months.",
+      "bear_case": "A sharp Bitcoin rally and regulatory scrutiny could push price down to $3.50 within 3 months."
+    }
+  }
+}

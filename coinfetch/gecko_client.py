@@ -54,13 +54,13 @@ class CryptoInsightsClient:
                     if (coin['id'].lower() == coin_input.lower() or 
                         coin['name'].lower() == coin_input.lower() or 
                         coin['symbol'].lower() == coin_input.lower()):
-                        print(f"✓ Found coin ID: {coin['id']}")
+                        print(f"[OK] Found coin ID: {coin['id']}")
                         return coin['id']
                 
                 # If exact match not found, return first result if available
                 if search_data.get('coins'):
                     first_match = search_data['coins'][0]
-                    print(f"✓ Using closest match: {first_match['id']} ({first_match['name']})")
+                    print(f"[OK] Using closest match: {first_match['id']} ({first_match['name']})")
                     return first_match['id']
             
             # Fallback: try getting full coins list (rate limited approach)
@@ -77,14 +77,14 @@ class CryptoInsightsClient:
                     if (coin['id'].lower() == coin_input_lower or 
                         coin['name'].lower() == coin_input_lower or 
                         coin['symbol'].lower() == coin_input_lower):
-                        print(f"✓ Found coin ID: {coin['id']}")
+                        print(f"[OK] Found coin ID: {coin['id']}")
                         return coin['id']
             
-            print(f"❌ Could not find coin: {coin_input}")
+            print(f"[ERROR] Could not find coin: {coin_input}")
             return None
             
         except requests.exceptions.RequestException as e:
-            print(f"❌ Error fetching coin ID: {e}")
+            print(f"[ERROR] Error fetching coin ID: {e}")
             return None
     
     def get_current_data(self, coin_id: str) -> Optional[Dict]:
@@ -136,17 +136,17 @@ class CryptoInsightsClient:
                 'last_updated': market_data.get('last_updated', datetime.now().isoformat())
             }
             
-            print(f"✓ Current price: ${current_data['current_price']:,.2f}")
-            print(f"✓ Market cap: ${current_data['market_cap']:,}")
-            print(f"✓ 24h volume: ${current_data['volume_24h']:,}")
+            print(f"[OK] Current price: ${current_data['current_price']:,.2f}")
+            print(f"[OK] Market cap: ${current_data['market_cap']:,}")
+            print(f"[OK] 24h volume: ${current_data['volume_24h']:,}")
             
             return current_data
             
         except requests.exceptions.RequestException as e:
-            print(f"❌ Error fetching current data: {e}")
+            print(f"[ERROR] Error fetching current data: {e}")
             return None
         except KeyError as e:
-            print(f"❌ Error parsing market data: {e}")
+            print(f"[ERROR] Error parsing market data: {e}")
             return None
     
     def get_historical_data(self, coin_id: str, timeframe: str) -> List[Dict]:
@@ -210,14 +210,14 @@ class CryptoInsightsClient:
                     'market_cap': round(market_cap, 2)
                 })
             
-            print(f"✓ Retrieved {len(historical_data)} historical data points")
+            print(f"[OK] Retrieved {len(historical_data)} historical data points")
             return historical_data
             
         except requests.exceptions.RequestException as e:
-            print(f"❌ Error fetching historical data: {e}")
+            print(f"[ERROR] Error fetching historical data: {e}")
             return []
         except KeyError as e:
-            print(f"❌ Error parsing historical data: {e}")
+            print(f"[ERROR] Error parsing historical data: {e}")
             return []
     
     def get_price_alerts_data(self, coin_id: str) -> Dict:
@@ -261,20 +261,20 @@ class CryptoInsightsClient:
         Returns:
             Complete coin data dictionary
         """
-        print(f"🚀 Starting data collection for: {coin_input}")
+        print(f"Starting data collection for: {coin_input}")
         print("=" * 50)
         
         # Get coin ID
         coin_id = self.get_coin_id(coin_input)
         if not coin_id:
-            print(f"❌ Could not find coin: {coin_input}")
-            print("💡 Try using the exact coin name or symbol (e.g., 'bitcoin', 'btc', 'ethereum', 'eth')")
+            print(f"[ERROR] Could not find coin: {coin_input}")
+            print("[TIP] Try using the exact coin name or symbol (e.g., 'bitcoin', 'btc', 'ethereum', 'eth')")
             return None
         
         # Get current market data
         current_data = self.get_current_data(coin_id)
         if not current_data:
-            print("❌ Failed to fetch current market data")
+            print("[ERROR] Failed to fetch current market data")
             return None
         
         # Add small delay to respect rate limits
@@ -301,7 +301,7 @@ class CryptoInsightsClient:
         }
         
         print("=" * 50)
-        print("✅ Data collection completed successfully!")
+        print("[SUCCESS] Data collection completed successfully!")
         
         return result
 
@@ -360,9 +360,9 @@ def save_to_csv(data: Dict, filename: str):
         csv_filename = filename if filename.endswith('.csv') else f"{filename}.csv"
         main_df.to_csv(csv_filename, index=False)
         
-        print(f"📁 Data saved to:")
-        print(f"   📊 Excel: {excel_filename}")
-        print(f"   📄 CSV: {csv_filename}")
+        print(f"Data saved to:")
+        print(f"   Excel: {excel_filename}")
+        print(f"   CSV: {csv_filename}")
         
     except Exception as e:
-        print(f"❌ Error saving to file: {e}")
+        print(f"Error saving to file: {e}")
