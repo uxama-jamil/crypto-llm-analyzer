@@ -1,0 +1,92 @@
+.app-layout {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.app-header {
+  background: transparent !important;
+  padding: 0;
+  height: auto;
+  line-height: normal;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px 20px;
+  text-align: center;
+  color: white;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.header-title .icon {
+  font-size: 2.5rem;
+}
+
+.header-title h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  color: white;
+}
+
+.header-subtitle {
+  font-size: 1.2rem;
+  margin: 0;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+.app-content {
+  padding: 0;
+  background: transparent;
+}
+
+.content-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+}
+
+.app-footer {
+  background: rgba(0,0,0,0.1) !important;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.footer-content p {
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-content {
+    padding: 30px 16px 15px;
+  }
+  
+  .header-title {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .header-title h1 {
+    font-size: 2rem;
+  }
+  
+  .header-subtitle {
+    font-size: 1rem;
+  }
+  
+  .content-container {
+    padding: 0 16px 30px;
+  }
+}
